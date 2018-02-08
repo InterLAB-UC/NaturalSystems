@@ -1,4 +1,4 @@
-Walker[]w = new Walker [5];
+Walker[]w = new Walker [1000];
 
 void setup() {
   size(500, 500);
@@ -9,8 +9,11 @@ void setup() {
 }
 
 void draw() {
+  noStroke();
+  fill(255,20);
+  rect(0,0,width,height);
   for (int i = 0; i< w.length; i++) {
-    w[i].display(0, 0, 0);
+    w[i].display(i*.2, 0, i*.09, i*.02);
     w[i].step();
   }
 }
