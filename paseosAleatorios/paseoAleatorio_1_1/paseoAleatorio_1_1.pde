@@ -15,20 +15,17 @@ void setup() {
 }
 
 void draw() {
-  rem = frameCount%10;
-  if (savePDF == true) {
-    beginRecord(PDF, "walker"+frameCount+".pdf");
-  }
+  rem = frameCount%30;
+
+  
   for (int i = 0; i< w.length; i++) {
     w[i].display(i*.2, 0, i*.09, i*.02);
     w[i].step();
   }
   if (rem == 0){
-  saveFrame("walker/frames######.png");
+  saveFrame("walker/frames######.tiff");
   }
-  if (savePDF == true) {
-    endRecord();
-  }
+
 }
 
 void mousePressed() {
