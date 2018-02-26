@@ -1,4 +1,6 @@
 class Walker {
+  PrintWriter textFile= createWriter("walker/S1_25.txt"); 
+
   float x;
   float y;
 
@@ -14,14 +16,14 @@ class Walker {
 
   void display() {
 
-    rect(x, y,x/100,y/100);
+    rect(x, y, x/100, y/100);
   }
 
   void step() {
-
+    int finish = 0;
     float xstep=map(noise(tx), 0, 1, -10, 10);
     float ystep=map(noise(ty), 0, 1, 0, 10);
-    stroke(map(ystep,0,10,60,255),150);
+    stroke(map(ystep, 0, 10, 60, 255), 150);
     int choice = int(random(4));
 
     if (choice == 0) {
@@ -34,12 +36,20 @@ class Walker {
     } else {
       y-=ystep;
     }
-    if (count == 1000) {
-      noLoop();
-      saveFrame("walker/perlin_#####.tiff");
+    textFile.println("x:"+x+"__"+"y:"+y);
+    if (count >= 1751) {
+
+      
+      saveFrame("walker/S1_25tiff");
+
+      textFile.flush();
+      textFile.close();
+
+      finish ++;
       exit();
     }
-    println(count);
+    
+    println(count );
 
     tx += 0.0001;
     ty += 0.00001;
